@@ -1,0 +1,16 @@
+AULA 7 — ENTRADAS E SAIDAS DE ESTOQUE
+
+1. Extraia o pacote na pasta CURSO MINI AGENTE e mescle as pastas.
+2. Preserve o arquivo .env, a pasta .venv e o banco dados\estoque_farmacia.db existentes.
+3. O pacote atualiza scripts/estoque_database.py e o agente SQL para incluir movimentacoes.
+4. O agente SQL anterior sera substituido por uma versao que consulta e registra movimentacoes.
+5. Para usar um menu manual de entradas e saidas:
+   python aulas\aula_07_banco_dados\08_movimentar_estoque.py
+6. Para usar o agente com linguagem natural:
+   python aulas\projeto_final_faq_rag\05_agente_consulta_estoque_sql.py
+
+Cada movimentacao cria um registro na tabela movimentacoes. O saldo atual e calculado pela soma das entradas menos as saidas. O sistema bloqueia saidas maiores que o saldo disponivel e registra tudo dentro de uma transacao SQLite.
+
+Antes de registrar pelo agente, informe codigo do produto, tipo de movimentacao, quantidade e motivo. Se faltar algum dado, o agente deve perguntar antes de executar.
+
+O banco continua em dados\estoque_farmacia.db. O arquivo do banco nao esta incluido neste pacote para preservar os dados existentes. A memoria e o banco vetorial tambem permanecem intocados.

@@ -1,0 +1,16 @@
+AULA 7 — BANCO DE DADOS SQL
+
+1. Extraia o pacote na pasta CURSO MINI AGENTE e mescle as pastas.
+2. O arquivo .env e a pasta .venv existentes devem ser preservados.
+3. O projeto utiliza as bibliotecas pandas e sqlalchemy que ja constam no requirements.txt.
+4. Crie e preencha o banco de exemplo:
+   python scripts\criar_banco_estoque.py
+5. Execute a aula de consultas SQL:
+   python aulas\aula_07_banco_dados\07_consultar_banco_sql.py
+6. Execute o agente que consulta o banco com linguagem natural:
+   python aulas\projeto_final_faq_rag\05_agente_consulta_estoque_sql.py
+
+O banco sera salvo em dados\estoque_farmacia.db.
+O banco e separado de dados\memoria_agente.db e dados\banco_vetorial_faq.
+O script de criacao e idempotente: ele nao duplica os dados de exemplo quando executado novamente.
+O agente SQL desta etapa apenas consulta dados. Ele nao altera produtos nem movimentacoes.

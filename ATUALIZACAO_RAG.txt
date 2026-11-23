@@ -1,0 +1,25 @@
+ATUALIZACAO DA RECUPERACAO RAG
+
+Substitua os quatro arquivos Python nas mesmas pastas do seu projeto.
+
+1. Recrie a colecao de embeddings
+
+python aulas\aula_04_embeddings_chromadb\04_criar_banco_vetorial.py
+
+O script preserva a colecao antiga e recria somente faq_colecao_multilingual. Os novos trechos sao organizados por pergunta e resposta do FAQ, em vez de cortes fixos no meio do texto.
+
+2. Diagnostique as buscas e a distancia de cada resultado
+
+python scripts\testar_busca_rag.py
+
+3. Teste o chatbot
+
+python aulas\aula_05_rag_pdf\05_chatbot_rag.py
+
+4. Teste o agente
+
+python aulas\projeto_final_faq_rag\04_agente_multiplas_ferramentas.py
+
+O filtro inicial aceita distancias cosseno de ate 0.62, recupera quatro candidatos e envia no maximo dois trechos proximos do melhor resultado. Distancias menores indicam resultados mais semelhantes. O limite pode precisar de ajuste de acordo com os resultados medidos no seu computador.
+
+Nao apague .env, .venv, chamados_suporte.csv ou a colecao antiga faq_colecao.

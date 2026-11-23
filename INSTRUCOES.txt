@@ -1,0 +1,13 @@
+PACOTE DE TESTES DE PROMPT INJECTION
+
+1. Faça uma cópia de segurança do arquivo dados\estoque_farmacia.db.
+2. Extraia o pacote na raiz do projeto, mesclando as pastas.
+3. Substitua o agente existente pelo arquivo 05_agente_consulta_estoque_sql_seguro.py deste pacote.
+4. Execute python scripts\testar_prompt_injection.py.
+5. Execute python aulas\projeto_final_faq_rag\05_agente_consulta_estoque_sql_seguro.py e siga os testes manuais em TESTES_MANUAIS_PROMPT_INJECTION.txt.
+6. Nos testes que solicitarem movimentação, responda N para manter os dados sem alteração.
+7. Encerre o agente e execute python scripts\verificar_integridade_estoque.py.
+
+O teste automatizado cria uma cópia temporária do banco para testar gravações e bloqueios. Os testes manuais nunca devem ser confirmados; responda N caso apareça a confirmação.
+
+Os testes são regressivos e educacionais. Não equivalem a uma auditoria profissional nem garantem proteção absoluta contra todas as formas de prompt injection. O arquivo SQLite continua acessível a qualquer pessoa que tenha permissões no Windows para ler ou alterar o arquivo.

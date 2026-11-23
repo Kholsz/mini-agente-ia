@@ -1,0 +1,11 @@
+ATUALIZACAO DE EMBEDDINGS PARA PORTUGUES
+
+Os tres scripts relacionados ao FAQ usam o modelo sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2.
+O modelo roda localmente em CPU. Nao usa a chave Groq nem gera cobranca de API.
+
+Substitua as pastas aulas/aula_04_embeddings_chromadb, aulas/aula_05_rag_pdf e aulas/projeto_final_faq_rag pelas pastas deste pacote.
+Mantenha seu .env, .venv, dados/chamados_suporte.csv e os outros arquivos pessoais.
+
+Depois execute: python aulas\aula_04_embeddings_chromadb\04_criar_banco_vetorial.py
+A primeira execucao baixa o modelo multilíngue e cria a colecao faq_colecao_multilingual.
+A colecao faq_colecao antiga sera preservada.

@@ -1,0 +1,63 @@
+ATUALIZACAO DE SEGURANCA E INTEGRIDADE SQL
+
+ANTES DE INSTALAR
+
+1. Feche o agente e qualquer menu de movimentacao.
+2. No CMD, dentro da pasta CURSO MINI AGENTE, faca uma copia do banco:
+   copy dados\estoque_farmacia.db dados\estoque_farmacia_backup_antes_seguranca.db
+3. Extraia este pacote na raiz CURSO MINI AGENTE e mescle as pastas.
+4. Nao substitua .env, .venv, dados\estoque_farmacia.db ou dados\memoria_agente.db.
+
+ARQUIVOS ATUALIZADOS
+
+scripts\estoque_database.py
+scripts\relatorios_estoque.py
+scripts\verificar_integridade_estoque.py
+aulas\aula_07_banco_dados\08_movimentar_estoque.py
+aulas\projeto_final_faq_rag\05_agente_consulta_estoque_sql_seguro.py
+
+VALIDAR O BANCO
+
+Com .venv ativo, execute:
+python scripts\verificar_integridade_estoque.py
+
+O resultado esperado inclui:
+"integridade_sqlite": "ok"
+"violacoes_chave_estrangeira": 0
+"saldos_negativos": []
+"triggers_ausentes": []
+"status": "ok"
+
+TESTAR O AGENTE COM CONFIRMACAO
+
+Execute:
+python aulas\projeto_final_faq_rag\05_agente_consulta_estoque_sql_seguro.py
+
+Para testar sem alterar o banco, solicite uma movimentacao de teste e responda N na confirmacao.
+O agente deve informar que a movimentacao foi cancelada e que nenhum dado foi alterado.
+
+Depois, se os dados exibidos estiverem corretos, teste uma movimentacao real pequena e confirme com S.
+
+PROTECOES ADICIONADAS
+
+- Confirmacao no terminal antes de qualquer entrada ou saida chamada pelo agente.
+- Confirmacao no menu manual de movimentacoes.
+- Transacao SQLite iniciada com BEGIN IMMEDIATE.
+- Validacao do codigo, tipo, quantidade e motivo.
+- Limite de 1.000.000 unidades por movimentacao.
+- Chaves estrangeiras ativadas em cada conexao SQLite.
+- Trigger no banco impedindo estoque negativo, mesmo se outra rotina tentar inserir uma saida diretamente.
+- Triggers impedindo alteracao ou exclusao do historico de movimentacoes.
+- Consultas SQL permitidas por lista fechada e parametros vinculados; o modelo nao gera SQL livre.
+- ID real da movimentacao incluido nas consultas de historico.
+- Protecao de campos textuais nos CSVs contra interpretacao como formulas em planilhas.
+- Auditoria da integridade SQLite, chaves estrangeiras, saldos e triggers.
+
+OBSERVACOES
+
+A atualizacao nao apaga produtos nem movimentacoes e nao inclui outro arquivo .db.
+O historico fica protegido contra edicao e exclusao pelo aplicativo. Para corrigir uma movimentacao registrada por engano, registre uma movimentacao compensatoria com motivo claro, em vez de alterar o historico original.
+
+O agente seguro e fornecido com um nome separado para que o script atual continue preservado durante a validacao. Depois dos testes, ele pode substituir o arquivo principal se tudo estiver correto.
+
+O banco SQLite e os CSVs permanecem arquivos locais sem criptografia. Restrinja o acesso a pasta do projeto no Windows e nao armazene senhas ou dados pessoais sensiveis nesse banco.

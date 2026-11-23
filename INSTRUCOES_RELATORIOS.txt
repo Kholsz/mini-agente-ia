@@ -1,0 +1,38 @@
+ATUALIZACAO DE RELATORIOS COM PANDAS
+
+Extraia o conteudo deste pacote na pasta raiz CURSO MINI AGENTE e mescle as pastas existentes.
+
+Nao substitua .env, .venv, dados/estoque_farmacia.db ou dados/memoria_agente.db.
+
+Arquivos adicionados:
+- scripts/relatorios_estoque.py
+- aulas/aula_07_banco_dados/09_relatorios_pandas.py
+
+Arquivo atualizado:
+- aulas/projeto_final_faq_rag/05_agente_consulta_estoque_sql.py
+
+Para gerar relatorios pelo menu:
+python aulas\aula_07_banco_dados\09_relatorios_pandas.py
+
+Tipos disponiveis:
+- Relatorio completo de estoque
+- Produtos no minimo ou abaixo do estoque minimo
+- Historico de movimentacoes, com filtros opcionais de data e produto
+- Movimentacoes por periodo
+- Resumo do estoque
+
+Os arquivos CSV sao gravados na pasta relatorios, criada automaticamente. Os valores sao exportados com separador ponto e virgula e virgula decimal para facilitar a abertura no Excel em configuracoes brasileiras.
+
+Para gerar relatorios por linguagem natural, execute:
+python aulas\projeto_final_faq_rag\05_agente_consulta_estoque_sql.py
+
+Exemplos:
+- Gere um relatorio completo do estoque.
+- Gere um relatorio dos produtos abaixo do estoque minimo.
+- Gere um historico de movimentacoes do MED001.
+- Gere um relatorio de movimentacoes entre 2026-11-01 e 2026-11-23.
+- Gere um resumo do estoque.
+
+O agente informa o caminho do CSV gerado. A geracao de relatorios apenas consulta o banco e cria arquivos CSV; nao altera produtos nem movimentacoes.
+
+Para movimentacoes por periodo, informe as duas datas no formato AAAA-MM-DD.
